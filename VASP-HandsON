@@ -1,0 +1,54 @@
+VASP Hands Ons:
+
+We always need at least 4 initial input files to start a VASP job.
+
+POSCAR : contains structural information
+INCAR : contains the tags that tells details of our jobs to the software
+KPOINRS : contains information about grids in reciprocal lattice
+POTCAR : contains predefined potentials
+
+Other inputs may be required for specific calculations. 
+
+POSCAR format:
+line1 : comment
+line2 : scale for lattice parameters
+line3-5 : lattice vectors 
+line6 : elements
+line7 : number of elements
+line8 : cartesian or direct, tell about how we define atomic coordination with respect to lattice vector
+line9-n : atomic coordinations
+
+POSCAR example:
+AFM  NiO
+ 4.17
+ 1.0 0.5 0.5
+ 0.5 1.0 0.5
+ 0.5 0.5 1.0
+ Ni  O
+ 2   2
+Cartesian
+ 0.0 0.0 0.0
+ 1.0 1.0 1.0
+ 0.5 0.5 0.5
+ 1.5 1.5 1.5
+
+KPOINTS example:
+k-points
+ 0
+gamma
+ 4  4  4 
+ 0  0  0
+
+* we usually only modify  4th line that specifies number of cuts along each direction in reciprocal space
+
+POTCAR files are provided by VASP developers and are licensed, so we need to download them.
+
+To understand INCAR tags the best reference is VASP wiki.
+
+
+1- self consistence field calculations (SCF)
+Here we only solve the schrodinger equation (Kohn-Sham equation) for electrons. 
+We will have some iterations (electronic steps) to find the electronic configuration that minimizes the total energy.
+
+
+
