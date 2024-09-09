@@ -1,5 +1,34 @@
 VASP Hands Ons:
 
+You need to have a ssh connection to our computer to be able to run calculations there:
+If you have MAC or Linux, open a terminal and use the following command, and password given to you in the class:
+
+"ssh course2024@biplab-Precision-7960-Tower.physics.uu.se"
+
+If you have Windows, you need to install a ssh client software like putty:
+
+"https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html"
+
+After installation use the following information to get connected:
+port : 22
+user : course2024
+host : biplab-Precision-7960-Tower.physics.uu.se
+
+-------------------------------------------------------------------------------------------------
+
+We will work in linux environment, so we need to know a few useful commands in linux:
+
+"ls"   # to see the content of a folder
+"pwd"  # to see the address to the current directory 
+"mkdir folder_name"   # to create a folder inside the current directory
+"cd <folder_name>"   # to go to a folder inside the current directory
+"cd <directory_address>"   # to go to a special directory
+"cd ../"   # to go one folder back
+"cd ../../"   # to go two folders back
+"cp ../my_file ."   # to copy a file, name my_file to the current folder from one folder out.
+
+-------------------------------------------------------------------------------------------------
+
 We always need at least 4 initial input files to start a VASP job.
 
 POSCAR : contains structural information
@@ -45,6 +74,7 @@ POTCAR files are provided by VASP developers and are licensed, so we need to dow
 
 To understand INCAR tags the best reference is VASP wiki.
 
+-------------------------------------------------------------------------------------------------
 
 A- self consistence field calculations (SCF)
 Here we only solve the schrodinger equation (Kohn-Sham equation) for electrons. 
@@ -67,8 +97,7 @@ Steps to follow:
 
 6- Check the outputs, especially "OUTCAR" file that contains the most important information about calculation results.
 
-
-
+-------------------------------------------------------------------------------------------------
 
 B- Convergence with respect to KPOINTS, and cutoff energy:
 1- Create a new folder by "mkdir kpoints_conv"
@@ -84,7 +113,7 @@ B- Convergence with respect to KPOINTS, and cutoff energy:
 * The Kpoints and ENCUT convergence should be done for each material separately, but as a rule of thumb, ENCUT = 500 eV is good for most of systems. 
 KPOINTS convergence should be done in most cases depending on our calculations' sensitivity. 
 
-
+-------------------------------------------------------------------------------------------------
 
 
 
