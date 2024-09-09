@@ -46,9 +46,46 @@ POTCAR files are provided by VASP developers and are licensed, so we need to dow
 To understand INCAR tags the best reference is VASP wiki.
 
 
-1- self consistence field calculations (SCF)
+A- self consistence field calculations (SCF)
 Here we only solve the schrodinger equation (Kohn-Sham equation) for electrons. 
 We will have some iterations (electronic steps) to find the electronic configuration that minimizes the total energy.
+
+Steps to follow:
+1- create a folder by "mkdir <folder_name>    # you choose the folder name
+2- copy POSCAR, KPOINTS, POTCAR, INCAR files in this folder by 
+"cp /home/course2024/lab/examples/GaAs/sc/POSCAR . "
+"cp /home/course2024/lab/examples/GaAs/sc/KPOINTS . "
+"cp /home/course2024/lab/examples/GaAs/sc/INCAR . "
+"cp /home/course2024/lab/examples/GaAs/sc/POTCAR . "
+
+3- You can modify files if needed by "nano <file_name>" like "nano POSCAR", an alternative is "vi POSCAR" but working with nano is easier for beginners.
+
+4- Submit calculation job to the computer by "vasp_std" 
+* Alternatively, if you want to store the outputs in a separate file instead of seeing them on the screen, use "vasp_std > vasp.out".  
+
+5- When you see "reached required accuracy - stopping structural energy minimisation" on you screen, the calculation is done.
+
+6- Check the outputs, especially "OUTCAR" file that contains the most important information about calculation results.
+
+
+
+
+B- Convergence with respect to KPOINTS, and cutoff energy:
+1- Create a new folder by "mkdir kpoints_conv"
+2- Use the input files from the previous calculation.
+3- Vary the kpoints grid uniformly from 5 to 35 in steps of 5, i.e. 5 5 5, 10 10 10, 15 15 15, ..., 35 35 35. Do each calculation in a separate folder, "mkdir 5"  for example for the first calculation.
+4- Plot the kpoints_number vs. total energy. At which Kpoints the total energy is converged?
+
+6- Create a new folder by "mkdir encut_conv"
+7- Use the input files from the scf calculation and the converged KPOINTS from the previous step.
+8- Vary the ENCUT input in the INCAR file, from 50 to 750 in steps of 100 eV, i.e. ENCUT = 50. Do each calculation in a separate folder, "mkdir 50"  for example for the first calculation.
+9- Plot the ENCUT_value vs. total energy. At which ENCUT value the total energy is converged?
+
+* The Kpoints and ENCUT convergence should be done for each material separately, but as a rule of thumb, ENCUT = 500 eV is good for most of systems. 
+KPOINTS convergence should be done in most cases depending on our calculations' sensitivity. 
+
+
+
 
 
 
