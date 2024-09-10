@@ -115,6 +115,72 @@ KPOINTS convergence should be done in most cases depending on our calculations' 
 
 -------------------------------------------------------------------------------------------------
 
+C- 3D vs 2D vs 1D vs 0D
+1- Find the eigen values of H atom, for this you need to do a scf calculation on a Hydrogen atom in a box (0D system).
+Q1- Should we do KPOINTS convergence?
 
+2- Do scf calculation for graphene monolayer (2D system).
+Q2- How do we create a graphene monolayer out of bulk graphite?
+Q2- Should we do KPOINTS convergence?
+
+3- 1D systems
+Q1- What is an example of 1D system?
+Q2- How does the reciprocal space look like for a 1D system?
+
+-------------------------------------------------------------------------------------------------
+
+D- Structural optimizations
+D1- Internal optimization (atomic relaxation)
+1- Relax the atomic structure of the CO molecule "cp /home/course2024/lab/examples/CO/POSCAR .", for this, you need to modify the INCAR file only.
+2- ADD these tags to the INCAR file: 
+IBRION = 2
+NSW = 100
+EDIFFG = -0.01
+3- What is the meaning with these tags?
+4- What is the equilibrium C-O bond length?
+
+
+D2- Cell optimization
+1- Optimize the lattice parameter of Gold (materials project ID: mp-81). 
+2- For this you need to vary the lattice parameter in the POSCAR file, between 4.0 and 4.3 in steps of 0.1, and find the minimum of energy vs. lattice parameter.
+
+
+D3- Cell optimization + atomic relaxation
+1- Optimize the Au cell automatically, by modifying the INCAR file:
+ISIF = 3
+IBRION = 2
+NSW = 100
+EDIFFG = -0.01
+2- Compare the lattice parameter that you found with the lattice parameter from the previous step.
+
+
+D4- Optimize the lattice parameter of graphene. Make sure that the vacuum is large enough at the end of the calculation.
+
+-------------------------------------------------------------------------------------------------
+E- Density of States (will be updated)
+
+-------------------------------------------------------------------------------------------------
+
+F- Electronic band structure (will be updated)
+What is reciprocal space?
+1- Upload a POSCAR to this website and visualize the reciprocal space and BZ
+https://www.materialscloud.org/work/tools/seekpath
+
+-------------------------------------------------------------------------------------------------
+G- Formation Energy and cohesive energy (will be updated)
+
+-------------------------------------------------------------------------------------------------
+- Magnetic materials (will be updated)
+
+-------------------------------------------------------------------------------------------------
+- Charge density, magnetization density, ELF (will be updated)
+
+-------------------------------------------------------------------------------------------------
+These tasks are good for people who have a lot of experience working with VASP, and for some Python, and find previous tasks trivial:
+
+Advanced task1: Create zigzag and armchair graphene nanoribbons and graphene nanotube using the ASE python package. Try to optimize the structure, calculate and plot the band structure.
+Advanced task2: Optimizing 2D systems via ISIF = 3 tag is not possible, do you know why? How can we overcome this problem? Generate a vasp_xy executable and compile it.
+Advanced task3: Write a script that uses API key to grab structures with specific features, like special symmetries or band-gap size, automatically from MatreialsProject. Try to optimize those structures automatically using to script.
+Advanced task4: Try to calculate the spin-spiral state for FCC Fe. 
 
 
