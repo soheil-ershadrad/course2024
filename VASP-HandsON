@@ -3,7 +3,7 @@ VASP Hands Ons:
 You need to have a ssh connection to our computer to be able to run calculations there:
 If you have MAC or Linux, open a terminal and use the following command, and password given to you in the class:
 
-"ssh course2024@biplab-Precision-7960-Tower.physics.uu.se"
+"ssh -X course2024@biplab-Precision-7960-Tower.physics.uu.se"
 
 If you have Windows, you need to install a ssh client software like putty:
 
@@ -157,7 +157,37 @@ EDIFFG = -0.01
 D4- Optimize the lattice parameter of graphene. Make sure that the vacuum is large enough at the end of the calculation.
 
 -------------------------------------------------------------------------------------------------
-E- Density of States (will be updated)
+E- Density of States 
+1- Calculate DOS for GaAs.
+* To combine POTCARs of Ga and As you can use a command like this:
+"cat /home/course2024/POTCARS/PBE/Ga/POTCAR /home/course2024/POTCARS/PBE/As/POTCAR > POTCAR"
+* Use 11 11 11 KPOINTS
+* Use the following INCAR:
+
+SYSTEM = GaAs    # arbitrary name
+ISTART = 0       # Put 0 if you start from scratch and 1 if you restart a job having the WAVECAR
+ISMEAR = 0       # Use Gaussian smearing if you don't know which smearing is better for your material.  0 : Gaussian smearing, -1 : Fermi smearing, There are more read here: https://www.vasp.at/wiki/index.php/ISMEAR
+SIGMA  = 0.05    # Width of Smearing in eV
+LORBIT = 11      # Projection into orbitals
+NSW    = 0       # Number of Ionic steps
+IBRION = -1      # Determines how the ions are updated and moved, use -1 if you don't want movement. (https://www.vasp.at/wiki/index.php/IBRION)
+ENCUT = 500      # Specifies the energy cutoff for the plane-wave basis set in eV.
+NELM   = 500     # Maximum number of Electronic steps
+NELMIN = 4       # Minimim number of converged electronic steps
+PREC = Accurate  # Accuracy of calculation
+EDIFF  = 1E-07   # total energy convergence thresold
+ALGO   = Fast    # The electronic minimization algorithm 
+
+* After the calculation is done, use vaspkit (code 111) to extract the DOS data and the "python3 dos.py" to plot the data.
+* You can use "open dos.png", if it didnt work you can dowload the plot to your computer by "scp course2024@biplab-Precision-7960-Tower.physics.uu.se:{address to file by 'pwd'}/dos.png ."
+
+1.5- Change SIGMA to 0.2 and redo the calculation.
+
+2- Calculate pDOS for GaAs.
+* No update in previous calculation is needed. Only use vaspkit (code 113) and "python3 pdos.py".
+
+2- Calculate DOS for Graphene.
+*Use 11 11 1 Kpoints.
 
 -------------------------------------------------------------------------------------------------
 
