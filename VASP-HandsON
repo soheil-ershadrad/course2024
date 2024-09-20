@@ -186,15 +186,75 @@ ALGO   = Fast    # The electronic minimization algorithm
 2- Calculate pDOS for GaAs.
 * No update in previous calculation is needed. Only use vaspkit (code 113) and "python3 pdos.py".
 
-2- Calculate DOS for Graphene.
+3- Calculate DOS for Graphene.
 *Use 11 11 1 Kpoints.
+
+4- Calculate DOS and pDOS for Au.
 
 -------------------------------------------------------------------------------------------------
 
-F- Electronic band structure (will be updated)
+F- Electronic band structure
 What is reciprocal space?
 1- Upload a POSCAR to this website and visualize the reciprocal space and BZ
 https://www.materialscloud.org/work/tools/seekpath
+
+2- Calculate band structure for GaAs
+Use the following KPOINTS and update the paths:
+k-points along high symmetry lines
+ 50  
+Line-mode
+r
+  0.000000000000000   0.000000000000000   0.000000000000000   !G
+  0.500000000000000   0.000000000000000   0.000000000000000   !M
+
+  0.500000000000000   0.000000000000000   0.000000000000000   !M
+  0.666666666666666   0.333333333333333   0.000000000000000   !K
+
+  0.666666666666666   0.333333333333333   0.000000000000000   !K
+  0.000000000000000   0.000000000000000   0.000000000000000   !G
+
+*Use the following INCAR:
+
+SYSTEM = TEST
+ISTART = 0
+ICHARG = 11
+ISMEAR = 0
+SIGMA  = 0.05
+LORBIT = 11
+NSW    = 0
+IBRION = -1
+ENCUT = 500
+NELM   = 200
+NELMIN = 4
+PREC = Accurate
+EDIFF  = 1E-07
+ALGO   = Fast
+
+* Use vaspkit to extract data:
+
+
+3- Calculate fatband for gaAs
+
+4- Calculate band structure for graphene.
+*Use the following KPOINTS:
+
+k-points along high symmetry lines
+ 50  
+Line-mode
+r
+  0.000000000000000   0.000000000000000   0.000000000000000   !G
+  0.500000000000000   0.000000000000000   0.000000000000000   !M
+
+  0.500000000000000   0.000000000000000   0.000000000000000   !M
+  0.666666666666666   0.333333333333333   0.000000000000000   !K
+
+  0.666666666666666   0.333333333333333   0.000000000000000   !K
+  0.000000000000000   0.000000000000000   0.000000000000000   !G
+
+
+
+
+5(bonus)- Calculate the effective mass for electrons and holes in GaAs. 
 
 -------------------------------------------------------------------------------------------------
 G- Formation Energy and cohesive energy (will be updated)
