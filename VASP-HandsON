@@ -259,7 +259,7 @@ What is the size of band gap? What is the type of band gap?
 3- Calculate the band structure for Si. What is the size and type of band gap?
 
 4- Calculate fatband for gaAs and Si.
-You need to use vaspkit to extract the data, and use the shared python file to plot it.
+You need to use vaspkit (213) to extract the data, and use the "fatband.py" file to plot it.
 
 5- Calculate band structure for graphene.
 *Use the following KPOINTS:
