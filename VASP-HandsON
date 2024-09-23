@@ -231,12 +231,18 @@ PREC = Accurate
 EDIFF  = 1E-07
 ALGO   = Fast
 
-* Use vaspkit to extract data:
+* Use vaspkit to extract data ().
 
+* Use band.py to plot the data.
 
-3- Calculate fatband for gaAs
+What is the size of band gap? What is the type of band gap? 
 
-4- Calculate band structure for graphene.
+3- Calculate the band structure for Si. What is the size and type of band gap?
+
+4- Calculate fatband for gaAs and Si.
+You need to use vaspkit to extract the data, and use the shared python file to plot it.
+
+5- Calculate band structure for graphene.
 *Use the following KPOINTS:
 
 k-points along high symmetry lines
@@ -252,16 +258,36 @@ r
   0.666666666666666   0.333333333333333   0.000000000000000   !K
   0.000000000000000   0.000000000000000   0.000000000000000   !G
 
-
-
-
-5(bonus)- Calculate the effective mass for electrons and holes in GaAs. 
+6(bonus)- Calculate the effective mass for electrons and holes in GaAs. 
+Search for effective mass here: "https://vaspkit.com/tutorials.html"
 
 -------------------------------------------------------------------------------------------------
-G- Formation Energy and cohesive energy (will be updated)
+G- Formation Energy and cohesive energy 
+
+Formation and cohesive energies are two quantities that indicate the energetic stability of a crystal.
+
+1- Calculate the formation and cohesive energy of these materials:
+I-AlN 
+II- SiN with symmetry of AlN
+III- C60 (bonus). Use the python file c60.py to make the structure. 
 
 -------------------------------------------------------------------------------------------------
-- Magnetic materials (will be updated)
+- Magnetic materials
+Up to here, all the calculations are done in none-spin polarized mode
+i.e. spins are degenerate and no magnetism is possible
+Now, we will lift the spin degeneracy.
+For this we need to include two tags in the INCAR files:
+
+ISPIN = 2  # 2: spin polarized, 1: none-polarized and is the default so we never included up to now.
+MAGMOM = 5.0 5.0 0.0 ...   # Initial guess for the magnetic moments of each atoms, so should be as many as atoms
+
+The rest are the same. So, all previous calculations are possible in the spin polarized mode.
+
+1- Optimize the structure of BCC and FCC Iron, in non-magnetic mode. Which one is the ground state?
+2- Optimize the structure of BCC and FCC Iron, in magnetic mode. Which one is the ground state?
+3- Compare the Total density of states for magnetic and non-magnetic BCC Fe.
+4- Calculate the band structure for FM CrI3 monolayer, what is the band gap?
+5- Calculate the first and second neighbor exchange interactions in NiO (bonus).
 
 -------------------------------------------------------------------------------------------------
 - Charge density, magnetization density, ELF (will be updated)
