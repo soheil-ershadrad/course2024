@@ -199,6 +199,25 @@ What is reciprocal space?
 1- Upload a POSCAR to this website and visualize the reciprocal space and BZ
 https://www.materialscloud.org/work/tools/seekpath
 
+For band structure calculation, we need a CHGCAR file from a SCF calculation. Can you guess why?
+And then we add "ICHARG = 11" to the INCAR file to tell vasp to read the CHGCAR from SCF.
+So INCAR looks like this:
+
+SYSTEM = GaAs    # arbitrary name
+ISTART = 0       # Put 0 if you start from scratch and 1 if you restart a job having the WAVECAR
+ICHARG = 11
+ISMEAR = 0       # Use Gaussian smearing if you don't know which smearing is better for your material.  0 : Gaussian smearing, -1 : Fermi smearing, There are more read here: https://www.vasp.at/wiki/index.php/ISMEAR
+SIGMA  = 0.05    # Width of Smearing in eV
+LORBIT = 11      # Projection into orbitals
+NSW    = 0       # Number of Ionic steps
+IBRION = -1      # Determines how the ions are updated and moved, use -1 if you don't want movement. (https://www.vasp.at/wiki/index.php/IBRION)
+ENCUT = 500      # Specifies the energy cutoff for the plane-wave basis set in eV.
+NELM   = 500     # Maximum number of Electronic steps
+NELMIN = 4       # Minimim number of converged electronic steps
+PREC = Accurate  # Accuracy of calculation
+EDIFF  = 1E-07   # total energy convergence thresold
+ALGO   = Fast    # The electronic minimization algorithm 
+
 2- Calculate band structure for GaAs
 Use the following KPOINTS and update the paths:
 k-points along high symmetry lines
@@ -231,7 +250,7 @@ PREC = Accurate
 EDIFF  = 1E-07
 ALGO   = Fast
 
-* Use vaspkit to extract data ().
+* Use vaspkit to extract data (211).
 
 * Use band.py to plot the data.
 
