@@ -269,7 +269,7 @@ Formation and cohesive energies are two quantities that indicate the energetic s
 1- Calculate the formation and cohesive energy of these materials:
 I-AlN 
 II- SiN with symmetry of AlN
-III- C60 (bonus). Use the python file c60.py to make the structure. 
+III- (bonus) Which is more stable among Graphene, Carbon Nanotube, C60, and Carbon NanoRibbon (Zigzag and Armchair)? Use the Python file ASE.py to make the structures. 
 
 -------------------------------------------------------------------------------------------------
 - Magnetic materials
@@ -288,10 +288,23 @@ The rest are the same. So, all previous calculations are possible in the spin po
 3- Compare the Total density of states for magnetic and non-magnetic BCC Fe.
 4- Calculate the band structure for FM CrI3 monolayer, what is the band gap?
 5- Calculate the first and second neighbor exchange interactions in NiO (bonus).
-
+-------------------------------------------------------------------------------------------------
+- LDA va GGA (will be updated)
 -------------------------------------------------------------------------------------------------
 - Charge density, magnetization density, ELF (will be updated)
-
+-------------------------------------------------------------------------------------------------
+- Diffusion (NEB) (will be updated)
+-------------------------------------------------------------------------------------------------
+- Elastic constants and mechanical properties (will be updated)
+-------------------------------------------------------------------------------------------------
+- Phonon calculations (will be updated)
+-------------------------------------------------------------------------------------------------
+- Band Gap correction methods: (will be updated)
+DFT+U 
+HSE06 (simple calculation bonus)
+GW (no calculation only discussion)
+-------------------------------------------------------------------------------------------------
+- Magnetic Anisotrpy (will be updated)
 -------------------------------------------------------------------------------------------------
 These tasks are good for people who have a lot of experience working with VASP, and for some Python, and find previous tasks trivial:
 
