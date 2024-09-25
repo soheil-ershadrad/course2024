@@ -311,7 +311,18 @@ The rest are the same. So, all previous calculations are possible in the spin po
 5- Band structure t2g eg for NiO. 
 6- Calculate the first and second neighbor exchange interactions in NiO (bonus).
 -------------------------------------------------------------------------------------------------
-- Charge density, magnetization density, ELF (will be updated)
+- Charge density, magnetization density, ELF
+The aim here is to visualize how charge density is distributed in the structure, 
+and see what partial charge density is.
+
+The total charge density is stored in CHGCAR file. So to see it, its is enough to drag and drop in Vesta.
+
+The partial charge density is stored in file, and the following needs to be added to the INCAR file to generate this output:
+LPARD = .TRUE.
+IBAND = 20 21 22 23 45   # band numbers to be included in partial charge
+EINT= -2 -1   # energy interval if needed in eV
+In this way charge density can be band or Kpoint decomposed. 
+
 -------------------------------------------------------------------------------------------------
 - LDA va GGA (will be updated)
 -------------------------------------------------------------------------------------------------
