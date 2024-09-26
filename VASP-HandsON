@@ -308,7 +308,7 @@ The rest are the same. So, all previous calculations are possible in the spin po
 2- Optimize the structure of BCC and FCC Iron, in magnetic mode. Which one is the ground state?
 3- Compare the Total density of states for magnetic and non-magnetic BCC Fe.
 4- Calculate the band structure for FM CrI3 monolayer, what is the band gap?
-5- Band structure t2g eg for NiO. 
+5- Optimize NiO, find the ground state and do Band structure to find t2g eg for NiO. 
 6- Calculate the first and second neighbor exchange interactions in NiO (bonus).
 -------------------------------------------------------------------------------------------------
 - Charge density, magnetization density, ELF
