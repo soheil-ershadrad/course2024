@@ -317,11 +317,22 @@ and see what partial charge density is.
 
 The total charge density is stored in CHGCAR file. So to see it, its is enough to drag and drop in Vesta.
 
-The partial charge density is stored in file, and the following needs to be added to the INCAR file to generate this output:
-LPARD = .TRUE.
+The partial charge density is stored in PARCHG file, and the following needs to be added to the INCAR file to generate this output:
+LPARD = .TRUE.      # Calculate partial charge density
+LSEPB = .TRUE.      # Write each band separately
 IBAND = 20 21 22 23 45   # band numbers to be included in partial charge
-EINT= -2 -1   # energy interval if needed in eV
+EINT= -2 -1   # energy interval if needed in eV and are not normalized with respect to the Fermi level
 In this way charge density can be band or Kpoint decomposed. 
+
+1- Calculate the charge density and partial charge density of GaAs.
+
+2- Calculate the charge density of Graphene.
+
+Magnetization density and change density difference can be calculated via vaspkit. (Num 31)
+
+3- Calculate the magnetization density of NiO.
+
+4- Calculate the charge transfer between Al an graphene.
 
 -------------------------------------------------------------------------------------------------
 - LDA va GGA (will be updated)
