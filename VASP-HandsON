@@ -335,23 +335,52 @@ Magnetization density and change density difference can be calculated via vaspki
 4- Calculate the charge transfer between Al an graphene.
 
 -------------------------------------------------------------------------------------------------
-- LDA va GGA (will be updated)
--------------------------------------------------------------------------------------------------
+- LDA va GGA 
+It is known that LDA usually underestimates the lattice parameter and GGA overestimates it.
+1- Prove this by comparing the LDA, GGA and experimental lattice parameter of bulk Silicon. 
+For this you need to use LDA POTCAR. Other inputs are the same as GGA. 
 
 -------------------------------------------------------------------------------------------------
-- Diffusion (NEB) (will be updated)
--------------------------------------------------------------------------------------------------
-- Elastic constants and mechanical properties (will be updated)
+- Band Gap correction methods: (will be updated)
+DFT+U 
+Read the DFT+U formalism from here: "https://www.vasp.at/wiki/index.php/DFT%2BU:_formalism"
+Hubbard correction is an onsite Columb-like effect that we add to highly correlated electrons to account for their many-body interactions.
+This is a way to improve bandgap underestimation in systems with localized d- or f-orbitals. 
+To use this method the following tags need to be added to the INCAR file:
+LDAU      = .TRUE.       # Enables the DFT+U method (Hubbard correction) in VASP to account for strong on-site Coulomb interactions, commonly used for materials with localized d or f electrons.
+LDAUTYPE  = 2            # Specifies the type of DFT+U method: 2 corresponds to the simplified rotationally invariant approach introduced by Liechtenstein.
+LDAUL     = 2 -1         # Specifies the angular momentum quantum number (L) for which the U correction is applied. In this case, 2 is for d-electrons (typically transition metals), and -1 means no correction for the second element.
+LDAUU     = 3.70 0.00    # Specifies the Hubbard U value in eV for the elements. Here, 3.70 eV is applied to the first element (d-electrons), and 0.00 eV for the second element (no U correction).
+LDAUJ     = 0.00 0.00    # Specifies the Hund's exchange parameter J in eV. Here, no exchange interaction (J = 0) is applied for both elements.
+LDAUPRINT = 2            # Controls the verbosity of the DFT+U output. A value of 2 gives detailed information about the DFT+U setup and results in the OUTCAR file.
+
+1- Apply Hubbard correction to NiO, with Ueff = 5 eV. Compare the bandgap size with and without Hubbard correction.
 -------------------------------------------------------------------------------------------------
 - Phonon calculations (will be updated) Al FCC vs BCC 
+Read more about phonon calculations by VASP and phonopy here: "https://phonopy.github.io/phonopy/vasp.html"
+
+For phonon calculations, we usually needs a supercell to make displacement there. We can do this by this command:
+phonopy -d --dim="2 2 2" -c POSCAR
+
+Then we copy each displaced POSCAR-00X to a directory according to its number and using the following INCAR, do an scf calculation.
+
+We run this command to calculate force constants:
+phonopy -f {1..6}/vasprun.xml
+
+We need a file called band.conf that contains information about phonon band plot:
+
+We run this command to plot the phonon bands:
+phonopy -p -s --dim="2 2 2" -c POSCAR band.conf
+
+1- Do phonon calculation for FCC and BCC Al, and see which one is stable.
+
 -------------------------------------------------------------------------------------------------
-- Band Gap correction methods: (will be updated)
-DFT+U FeO
-HSE06 (simple calculation bonus)
-GW (no calculation only discussion)
+- Diffusion (NEB)
+
 -------------------------------------------------------------------------------------------------
-- Magnetic Anisotrpy (will be updated)
--------------------------------------------------------------------------------------------------
+- Elastic constants and mechanical properties (will be updated)
+
+
 These tasks are good for people who have a lot of experience working with VASP, and for some Python, and find previous tasks trivial:
 
 Advanced task1: Create zigzag and armchair graphene nanoribbons and graphene nanotube using the ASE python package. Try to optimize the structure, calculate and plot the band structure.
