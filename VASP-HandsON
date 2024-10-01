@@ -353,6 +353,7 @@ LDAUL     = 2 -1         # Specifies the angular momentum quantum number (L) for
 LDAUU     = 3.70 0.00    # Specifies the Hubbard U value in eV for the elements. Here, 3.70 eV is applied to the first element (d-electrons), and 0.00 eV for the second element (no U correction).
 LDAUJ     = 0.00 0.00    # Specifies the Hund's exchange parameter J in eV. Here, no exchange interaction (J = 0) is applied for both elements.
 LDAUPRINT = 2            # Controls the verbosity of the DFT+U output. A value of 2 gives detailed information about the DFT+U setup and results in the OUTCAR file.
+LMAXMIX = 4              # 4 for d electrons and 6 for f electrons
 
 1- Apply Hubbard correction to NiO, with Ueff = 5 eV. Compare the bandgap size with and without Hubbard correction.
 -------------------------------------------------------------------------------------------------
